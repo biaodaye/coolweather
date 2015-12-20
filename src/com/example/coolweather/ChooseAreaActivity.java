@@ -13,6 +13,7 @@ import com.example.coolweather.util.Utility;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -78,6 +79,11 @@ public class ChooseAreaActivity extends Activity {
 				}else if (currentLevel==CITY_LEVEL) {
 					selectedCity=cityList.get(arg2);
 					queryCounties();
+				}else if (currentLevel==COUNTY_LEVEL) {
+					selectedCounty=countyList.get(arg2);
+					Intent intent=new Intent(ChooseAreaActivity.this, WeatherActivity.class);
+					intent.putExtra("county_code", selectedCounty.getCountyCode());
+					startActivity(intent);
 				}
 			}
 		});
